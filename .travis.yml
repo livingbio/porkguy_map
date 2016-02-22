@@ -17,7 +17,6 @@ install:
 script:
 - cd ./src
 - py.test --cov=./
-- flake8 ./
 - cd $TRAVIS_BUILD_DIR
 deploy:
   skip_cleanup: true
