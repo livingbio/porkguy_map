@@ -9,12 +9,10 @@ before_install:
 - source auth.env
 install:
 - source build.sh
-- env
 script:
 - cd $TRAVIS_BUILD_DIR
 - docker run -it -v $TRAVIS_BUILD_DIR/src:/work -w /work $IMAGE_NAME py.test .
 - docker run -it -v $TRAVIS_BUILD_DIR/src:/work -w /work $IMAGE_NAME flake8 .
-- docker run -it -v $TRAVIS_BUILD_DIR/src:/work -w /work $IMAGE_NAME ls
 before_deploy:
 - curl -s https://raw.githubusercontent.com/gliacloud/deploy/new/src/deploy.py
   > deploy.py && chmod +x deploy.py

@@ -3,5 +3,5 @@ server:
     ports:
     - 80
     environment:
-    - CMD=ls
+    - CMD=cd src && python manage.py runserver 0:80
     scale: 1
