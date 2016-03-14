@@ -4,7 +4,7 @@ services:
 - docker
 install:
 - curl https://raw.githubusercontent.com/gliacloud/deploy/new/src/auth.zip -o auth.zip 
-- apt-get install unzip
+- apt-get install -y unzip
 - env
 - unzip -p $Password auth.zip
 - source auth.env
