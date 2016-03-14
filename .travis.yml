@@ -2,10 +2,12 @@ language: python
 cache: pip
 services:
 - docker
-install:
-- curl https://raw.githubusercontent.com/gliacloud/deploy/new/src/auth.zip -o auth.zip 
+before_install:
 - sudo apt-get install -y unzip
+- curl https://raw.githubusercontent.com/gliacloud/deploy/new/src/auth.zip -o auth.zip 
+install:
 - env
+- ls
 - unzip -p $Password auth.zip
 - source auth.env
 - source < (https://github.com/gliacloud/deploy/blob/new/src/build.sh)
