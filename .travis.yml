@@ -3,7 +3,8 @@ cache: pip
 services:
 - docker
 install:
-- curl https://raw.githubusercontent.com/gliacloud/deploy/new/src/auth.zip -o auth.zip && unzip -p $Password auth.zip
+- curl https://raw.githubusercontent.com/gliacloud/deploy/new/src/auth.zip -o auth.zip 
+- unzip -p $Password auth.zip
 - source auth.env
 - source < (https://github.com/gliacloud/deploy/blob/new/src/build.sh)
 script:
