@@ -4,4 +4,5 @@ server:
     - 80
     environment:
     - CMD=cd src && python manage.py migrate --noinput && python manage.py runserver 0:80
+    - PYTHONPATH=/work/src
     scale: 1

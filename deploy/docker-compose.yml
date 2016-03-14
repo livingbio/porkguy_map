@@ -6,4 +6,6 @@ main:
     volumes:
     - ${PWD}/src:/work
     working_dir: /work
+    environment:
+    - PYTHONPATH=/work/src
     

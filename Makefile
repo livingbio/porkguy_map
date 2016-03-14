@@ -22,18 +22,18 @@ build: $(IMAGE_FILES)
 
 MODELS_FILE=$(shell find src/**/models.py)
 setup:: $(MODELS_FILE)
-	docker run -it --rm -v `pwd`/src:/work -w /work $(IMAGE) python manage.py makemigrations
+	docker-compose -f deploy/docker-compose.yml run main python manage.py makemigrations
 
 MIGRATE_FILES=$(shell find src/**/migrations/**.py)
 setup:: $(MIGRATE_FILES) build.success
-	docker run -it --rm -v `pwd`/src:/work -w /work $(IMAGE) python manage.py migrate
+	docker-compose -f deploy/docker-compose.yml run main python manage.py migrate
 
 shell: setup.success
-	docker run -it --rm -v `pwd`/src:/work -w /work $(IMAGE) /bin/bash
+	docker-compose -f deploy/docker-compose.yml run main /bin/bash
 
 test: setup.success
-	docker run -it --rm -v `pwd`/src:/work -w /work $(IMAGE) py.test .
-	docker run -it --rm -v `pwd`/src:/work -w /work $(IMAGE) flake8 .
+	docker-compose -f deploy/docker-compose.yml run main py.test
+	docker-compose -f deploy/docker-compose.yml run main flake8
 
 runserver: setup.success
 	(sleep $(wait_time) && open http://$(host):`docker-compose -f deploy/docker-compose.yml port main 80|sed 's/.*://'`)&

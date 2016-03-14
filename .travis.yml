@@ -11,8 +11,7 @@ install:
 - source build.sh
 script:
 - cd $TRAVIS_BUILD_DIR
-- docker run -it -v $TRAVIS_BUILD_DIR/src:/work -w /work $IMAGE_NAME py.test .
-- docker run -it -v $TRAVIS_BUILD_DIR/src:/work -w /work $IMAGE_NAME flake8 .
+- make test
 before_deploy:
 - curl -s https://raw.githubusercontent.com/gliacloud/deploy/new/src/deploy.py
   > deploy.py && chmod +x deploy.py
