@@ -32,6 +32,7 @@ shell: setup.success
 	docker-compose -f deploy/docker-compose.yml run main /bin/bash
 
 test: setup.success
+	env
 	docker-compose -f deploy/docker-compose.yml run main py.test
 	docker-compose -f deploy/docker-compose.yml run main flake8
 
