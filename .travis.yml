@@ -11,6 +11,7 @@ install:
 - source build.sh
 script:
 - cd $TRAVIS_BUILD_DIR
+- docker-compose --version
 - env
 - make test -n
 - make test 
