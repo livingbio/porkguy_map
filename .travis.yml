@@ -9,6 +9,7 @@ before_install:
 - source auth.env
 install:
 - source build.sh
+- env
 script:
 - docker run -it -v $TRAVIS_BUILD_DIR/src:/work -w /work $IMAGE_NAME py.test .
 - docker run -it -v $TRAVIS_BUILD_DIR/src:/work -w /work $IMAGE_NAME flake8 .
