@@ -22,6 +22,7 @@ build: $(IMAGE_FILES)
 
 MODELS_FILE=$(shell find src/**/models.py)
 setup:: $(MODELS_FILE)
+	env
 	docker-compose -f deploy/docker-compose.yml run main python manage.py makemigrations
 
 MIGRATE_FILES=$(shell find src/**/migrations/**.py)
