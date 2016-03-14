@@ -26,6 +26,7 @@ setup:: $(MODELS_FILE)
 
 MIGRATE_FILES=$(shell find src/**/migrations/**.py)
 setup:: $(MIGRATE_FILES) build.success
+	env
 	docker-compose -f deploy/docker-compose.yml run main python manage.py migrate
 
 shell: setup.success
