@@ -3,7 +3,7 @@ cache: pip
 services:
 - docker
 before_install:
-- docker run -it -p 1234:80 nginx
+- docker run -it -p 1234:80 -d nginx
 install:
 - source build.sh
 script:
